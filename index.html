@@ -3,18 +3,98 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Bike Consultant | Ride Smarter</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>BikeConsultant.com</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-image: url('https://images.unsplash.com/photo-1605514816132-3b6c0d1d9fc6'); /* Free bike background */
+      background-size: cover;
+      background-position: center;
+      backdrop-filter: blur(2px);
+      color: white;
+    }
+
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.6);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin: 0;
+    }
+
+    .tagline {
+      font-size: 1.2em;
+      margin-bottom: 20px;
+    }
+
+    .form-box {
+      background-color: rgba(255, 255, 255, 0.15);
+      padding: 30px;
+      border-radius: 15px;
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: none;
+      font-size: 1em;
+    }
+
+    button {
+      background-color: #ffcc00;
+      border: none;
+      padding: 12px 20px;
+      font-size: 1em;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    #thankyou {
+      display: none;
+      font-size: 1.2em;
+      color: lightgreen;
+      margin-top: 20px;
+    }
+  </style>
 </head>
 <body>
-  <div class="hero">
-    <div class="overlay">
-      <h1>BikeConsultant.com</h1>
-      <p class="tagline">🚴‍♂️ Ride Smarter. Choose Better.</p>
-      <div class="form-card">
-        <h2>Book Your Free Bike Consultation</h2>
-        <form action="https://formsubmit.co/YOUR_EMAIL@gmail.com" method="POST">
-          <input type="text" name="name" placeholder="Your Full Name" required />
-          <input type="tel" name="phone" placeholder="Phone Number" required />
-          <input type="email" name="email" placeholder="
-a
+  <div class="overlay">
+    <h1><strong>BikeConsultant.com</strong></h1>
+    <div class="tagline">🏍️ Ride Smarter. Choose Better.</div>
+
+    <div class="form-box">
+      <form id="bikeForm" onsubmit="submitForm(event)">
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="tel" name="phone" placeholder="Phone Number" required />
+        <input type="email" name="email" placeholder="Gmail ID" required />
+        <input type="text" name="budget" placeholder="Your Budget (₹)" required />
+        <textarea name="address" rows="2" placeholder="Your Address" required></textarea>
+        <button type="submit">Book Now</button>
+      </form>
+      <div id="thankyou">✅ Thank you! Your appointment has been booked. Our team will contact you soon.</div>
+    </div>
+  </div>
+
+  <script>
+    function submitForm(e) {
+      e.preventDefault();
+      document.getElementById("bikeForm").style.display = "none";
+      document.getElementById("thankyou").style.display = "block";
+      // Optional: send data to email or Google Sheets via third-party
+    }
+  </script>
+</body>
+</html>
